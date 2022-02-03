@@ -9,8 +9,79 @@ function nextSequence(){
     var randomChosenColour = buttonColours[randomNumber];
     gamePattern.push(randomChosenColour);
 
+    $("#" + randomChosenColour).on("click",function(){
+        if(this === randomChosenColour){
+            $("#" + randomChosenColour).fadeOut(100).fadeIn(100).fadeOut(100);
+        }
+    });
 
-    // function nextSequence(){                                          We can also use this instead of above statements.
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // function nextSequence(){                                          We can also use this instead of above statements.
 //     var randomNumber = Math.floor(Math.random()*4);
     
 //     var randomChosenColour;
@@ -30,10 +101,5 @@ function nextSequence(){
 //         randomChosenColour = "blue";
 //         gamePattern.push(randomChosenColour);
 //     }
-
-}
-
-
-
 
 
