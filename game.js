@@ -23,12 +23,36 @@ $(".btn").click(function(){
     userClickedPattern.push(userChosenColour);
     playSound(userChosenColour);
     animatePress(userChosenColour);
+
+    checkAnswer(userClickedPattern.length-1);
 });
+
+function checkAnswer(currentLevel){
+    if(userClickedPattern[currentLevel] === gamePattern[currentLevel]){
+        console.log("success");
+
+        if(userClickedPattern.length === gamePattern.length){
+            setTimeout(function() {
+                nextSequence();
+            },1000);
+        }
+    }
+    else{
+        $("body").addClass("game-over");
+        setTimeout(function(){
+            $("body").removeClass("game-over");
+        },200);
+        playSound("wrong");
+        console.log("wrong");
+    }
+}
 
 function nextSequence(){
 
+    userClickedPattern = [];
+
     level++;
-    $("h1").text("Level" + " " + level);
+    $("#level-title").text("Level " + level);
 
     var randomNumber = Math.floor(Math.random()*4);
     var randomChosenColour = buttonColours[randomNumber];
