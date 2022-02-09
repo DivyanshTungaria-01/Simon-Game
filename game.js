@@ -1,4 +1,3 @@
-
 var buttonColours = ["red","blue","green","yellow"];
 var gamePattern = [];
 var userClickedPattern = [];
@@ -7,9 +6,7 @@ var started = false;
 var level = 0;
 
 $(document).keypress(function(){
-    // if(level === 0){
-    //     nextSequence();
-    // }
+
     if(!started){
         $("h1").text("Level " + level);
         nextSequence();
@@ -29,7 +26,6 @@ $(".btn").click(function(){
 
 function checkAnswer(currentLevel){
     if(userClickedPattern[currentLevel] === gamePattern[currentLevel]){
-        console.log("success");
 
         if(userClickedPattern.length === gamePattern.length){
             setTimeout(function() {
@@ -43,8 +39,17 @@ function checkAnswer(currentLevel){
             $("body").removeClass("game-over");
         },200);
         playSound("wrong");
-        console.log("wrong");
+
+        $("h1").text("Game Over, Press Any Key to Restart");
+
+        startOver();
     }
+}
+
+function startOver(){
+    level = 0;
+    gamePattern = [];
+    started = false;
 }
 
 function nextSequence(){
@@ -76,89 +81,3 @@ function animatePress(currentColour){
         $("#" + currentColour).removeClass("pressed");
     },100);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- // function nextSequence(){                                          We can also use this instead of above statements.
-//     var randomNumber = Math.floor(Math.random()*4);
-    
-//     var randomChosenColour;
-//     if(randomNumber === 0){
-//         randomChosenColour = "green";
-//         gamePattern.push(randomChosenColour);
-//     }
-//     else if(randomNumber === 1){ 
-//         randomChosenColour = "red";
-//         gamePattern.push(randomChosenColour);
-//     }
-//     else if(randomNumber === 2){
-//         randomChosenColour = "yellow";
-//         gamePattern.push(randomChosenColour);
-//     }
-//     else if(randomNumber === 3){
-//         randomChosenColour = "blue";
-//         gamePattern.push(randomChosenColour);
-//     }
-
-
